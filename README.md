@@ -1,2 +1,2 @@
 # BookShopAutomationPractice
-Practicing Java, Selenium WebDriver
+Java and Selenium WebDriver- Automation Practice.
