@@ -4,4 +4,45 @@
   <artifactId>bookShoopAutomationPractice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>bookShoopAutomationPractice</name>
+    
+  <properties>
+    <selenium.version>3.141.59</selenium.version>
+    <webdriverextensions.version>3.11.0</webdriverextensions.version>
+	<junit.version>4.12</junit.version>
+	<commons-io.version>2.6</commons-io.version>
+   	<assertj.version>3.14.0</assertj.version>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+	<dependency>  
+ 		<groupId>org.testng</groupId>  
+ 		<artifactId>testng</artifactId>  
+ 		<version>6.8</version>  
+ 		<scope>compile</scope>  
+	</dependency> 
+
+	<dependency>
+	<groupId>com.github.webdriverextensions</groupId>
+	<artifactId>webdriverextensions</artifactId>
+      <version>${webdriverextensions.version}</version>
+      <scope>test</scope>
+	</dependency>
+	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  
+    </dependencies>
+  
 </project>
