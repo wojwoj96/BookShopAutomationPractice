@@ -26,5 +26,9 @@ public class BankTransferSection extends Section{
 		// TODO Auto-generated constructor stub
 	}
 
+	public boolean isBankTransferChecked() {
+		this.directBankTransferPaymentRadioButton.isSelected();
+		return true;
+	}
 	
 }

@@ -1,7 +1,9 @@
 package bookShoop.selenium.core;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import bookShoop.selenium.core.section.AdditionalInformationSection;
 import bookShoop.selenium.core.section.BankTransferSection;
@@ -25,9 +27,14 @@ public class CheckOrderPage extends Page{
 	@FindBy(css = "")
     private YourOrderSection yourOrderSection;
 
-	public CheckOrderPage() {
-		super();
-	}
+	private WebDriver driver;
+	
+	public CheckOrderPage(WebDriver driver){
+	       this.driver=driver;
+
+	       //Initialise Elements
+	       PageFactory.initElements(driver, this);
+	   }
 	
 	public AdditionalInformationSection getAdditionalInformationSection() {
 		return additionalInformationSection;

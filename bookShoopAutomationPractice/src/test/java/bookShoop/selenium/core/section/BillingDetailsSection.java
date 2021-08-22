@@ -25,7 +25,7 @@ public class BillingDetailsSection extends Section{
     private WebElement billingPhone;
 	
 	@FindBy(id = "select2-chosen-1")
-    private WebElement country;
+    private WebElement billingCountry;
 	
 	@FindBy(id = "billing_address_1")
     private WebElement billingAddress1;
@@ -43,5 +43,44 @@ public class BillingDetailsSection extends Section{
 		super(driver);
 	}
 	
+	public void setBillingFirstName(String name){
+		billingFirstName.clear();
+		billingFirstName.sendKeys(name);
+	   }
+	
+	public void setBillingLastName(String lastName){
+		billingLastName.clear();
+		billingLastName.sendKeys(lastName);
+	   }
+	
+	public void setBillingEmail(String email){
+		billingEmail.clear();
+		billingEmail.sendKeys(email);
+	   }
+	
+	public void setBillingPhone(String phone){
+		billingPhone.clear();
+		billingPhone.sendKeys(phone);
+	   }
+	
+	public void setBillingCountry(String country){
+		billingCountry.clear();
+		billingCountry.sendKeys(country);
+	   }
+	
+	public void setBillingAddress1(String adress1){
+		billingAddress1.clear();
+		billingAddress1.sendKeys(adress1);
+	   }
+	
+	public void setBillingPostcode(String code){
+		billingPostcode.clear();
+		billingPostcode.sendKeys(code);
+	   }
+	
+	public void setBillingCity(String city){
+		billingCity.clear();
+		billingCity.sendKeys(city);
+	   }
 	
 }

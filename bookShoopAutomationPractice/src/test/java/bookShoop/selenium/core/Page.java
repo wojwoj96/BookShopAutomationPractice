@@ -1,8 +1,10 @@
 package bookShoop.selenium.core;
 
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.github.webdriverextensions.WebSite;
 
@@ -12,10 +14,7 @@ public class Page extends WebSite{
 
 	@FindBy(id = "site-logo")
     private WebElement logo;
-	
-	@FindBy(id = "main-nav")
-    private MainMenueWebKomponent mainMenueWebKomponent;
-	
+			
 	@FindBy(css = "main-nav")
     private NavigationMainMenu navigationMainMenu;
 	
@@ -28,7 +27,12 @@ public class Page extends WebSite{
 		super();
 	}
 	
-    public void refreshPage() {
+	
+    public Page(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void refreshPage() {
 
         UiBot.driver().navigate().refresh();
 
@@ -41,16 +45,10 @@ public class Page extends WebSite{
         UiBot.waitUntilWebElementVisible(logo, 5);
     }
 	
-    
-    
-    public MainMenueWebKomponent getMainMenueWebKomponent() {
-    	return mainMenueWebKomponent;
-    }
-    
-    
     public NavigationMainMenu getNavigationMainMenu() {
     	return navigationMainMenu;
     }
+    
 
 	@Override
 	public void open(Object... arguments) {

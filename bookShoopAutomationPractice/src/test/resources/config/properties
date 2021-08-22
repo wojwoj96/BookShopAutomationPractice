@@ -4,7 +4,7 @@
 browser.browser=CHROME
 
 # Path Driver
-browser.driverpath=C:\\BookShopAutomationPractice\\BookShopAutomationPractice\\chromedriver_93.0.4577.15.exe
+browser.driverpath=C:\\BookShopAutomationPractice\\BookShopAutomationPractice\\chromedriver_92.0.4515.107.exe
 #browser.driverpath=C:\\geckodriver.exe
 
 # Starting website 

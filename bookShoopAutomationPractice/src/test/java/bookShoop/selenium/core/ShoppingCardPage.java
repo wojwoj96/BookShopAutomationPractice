@@ -2,8 +2,10 @@ package bookShoop.selenium.core;
 
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ShoppingCardPage extends Page{
 
@@ -23,9 +25,27 @@ public class ShoppingCardPage extends Page{
 	@FindBy(xpath = "//*[@id=\"page-34\"]/div/div[1]/div[2]/div/div/a")
     private WebElement proceedToCheckoutButtonXpath;
 	
-	public void proceedToCheckout() {
+	private WebDriver driver;
+	
+	public ShoppingCardPage(WebDriver driver){
+	       this.driver=driver;
+
+	       //Initialise Elements
+	       PageFactory.initElements(driver, this);
+	   }
+	
+	//To check if page is opened and has added book.
+	   public boolean isPageOpened(){
+	       return productNameInTheBasketXpath.getText().toString().contains("Selenium Ruby");
+	   }
+	
+	   
+	   
+	public CheckOrderPage proceedToCheckout() {
 		this.proceedToCheckoutButtonXpath.click();
+		return new CheckOrderPage(driver);
 	}
+	
 	
 	
 }
