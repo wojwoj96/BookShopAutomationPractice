@@ -1,11 +1,14 @@
 package bookShoop.selenium.core;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import bookShop.selenium.integration.integration.UiBot;
 
 public class ShoppingCardPage extends Page{
 
@@ -22,16 +25,17 @@ public class ShoppingCardPage extends Page{
 	@FindBy(xpath = "//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[2]/td/input[1]")
     private WebElement updateButtonXpath;
 	
-	@FindBy(xpath = "//*[@id=\"page-34\"]/div/div[1]/div[2]/div/div/a")
+	@FindBy(css = "#page-34 > div > div.woocommerce > div > div > div > a")
     private WebElement proceedToCheckoutButtonXpath;
 	
 	private WebDriver driver;
 	
 	public ShoppingCardPage(WebDriver driver){
 	       this.driver=driver;
-
+	       //UiBot.waitForPageLoaded();
 	       //Initialise Elements
 	       PageFactory.initElements(driver, this);
+	       
 	   }
 	
 	//To check if page is opened and has added book.
@@ -42,6 +46,8 @@ public class ShoppingCardPage extends Page{
 	   
 	   
 	public CheckOrderPage proceedToCheckout() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		//UiBot.waitForPageLoaded();
 		this.proceedToCheckoutButtonXpath.click();
 		return new CheckOrderPage(driver);
 	}

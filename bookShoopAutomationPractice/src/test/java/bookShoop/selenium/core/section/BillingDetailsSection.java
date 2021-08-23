@@ -3,11 +3,12 @@ package bookShoop.selenium.core.section;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import bookShoop.selenium.core.CheckOrderPage;
 import bookShoop.selenium.core.Section;
 
-public class BillingDetailsSection extends Section{
+public class BillingDetailsSection {
 
 	@FindBy(id = "billing_first_name")
     private WebElement billingFirstName;
@@ -39,13 +40,23 @@ public class BillingDetailsSection extends Section{
 	@FindBy(id = "billing_city")
     private WebElement billingCity;
 	
-	public BillingDetailsSection(WebDriver driver) {
-		super(driver);
-	}
+	//public BillingDetailsSection(WebDriver driver) {
+		//super(driver);
+	//}
+	
+private WebDriver driver;
+	
+	public BillingDetailsSection(WebDriver driver){
+	       this.driver=driver;
+
+	       //Initialise Elements
+	       PageFactory.initElements(driver, this);
+	   }
 	
 	public void setBillingFirstName(String name){
-		billingFirstName.clear();
-		billingFirstName.sendKeys(name);
+		this.billingFirstName.isDisplayed();
+		this.billingFirstName.clear();
+		this.billingFirstName.sendKeys(name);
 	   }
 	
 	public void setBillingLastName(String lastName){

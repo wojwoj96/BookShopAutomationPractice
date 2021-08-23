@@ -9,10 +9,16 @@ public class Section extends PageObject{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	@Override
 	protected boolean istInitialisiert() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+//private WebDriver driver;
+	
+	
+	
 }
