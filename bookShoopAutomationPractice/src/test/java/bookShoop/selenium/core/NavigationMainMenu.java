@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import ch.qos.logback.core.db.dialect.MySQLDialect;
-
 public class NavigationMainMenu extends Page{
 
 	@FindBy(css = "#main-nav ul.main-nav > li")
@@ -27,7 +25,7 @@ public class NavigationMainMenu extends Page{
 	
 	public NavigationMainMenu(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		
 	}
 		
 	public ShopPage goToShopPage() {
@@ -48,9 +46,6 @@ public class NavigationMainMenu extends Page{
     	int index = 0;
     	this.menueChoice.get(index).click();
     }
-	
-
-
 	
 	
 }

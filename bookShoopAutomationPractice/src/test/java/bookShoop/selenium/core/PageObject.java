@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class PageObject {
+import com.github.webdriverextensions.WebSite;
+
+public abstract class PageObject extends WebSite{
 
 	private WebDriver driver;
 
@@ -34,7 +36,7 @@ public abstract class PageObject {
         if (initElemente) {
             PageFactory.initElements(driver, this);
 
-            assertTrue(istInitialisiert());
+            assertTrue(istInitialised());
         }
     }
     
@@ -47,5 +49,5 @@ public abstract class PageObject {
         }
     }
     
-    protected abstract boolean istInitialisiert();
+    protected abstract boolean istInitialised();
 }

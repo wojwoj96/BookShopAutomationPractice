@@ -19,6 +19,15 @@ public class AssertionHelper {
         });
     }
 	
+	 public static void assertValues(final List expected, final List actuall) {
+
+	        SoftAssertions.assertSoftly(softly -> {
+	            for (int i = 0; i < expected.size(); i++) {
+	                softly.assertThat(actuall.get(i)).as("Values").isEqualTo(expected.get(i));
+	            }
+	        });
+	    }
+	
 	  public static void assertSimply(final Object expected, final Object actuall) {
 
 	        SoftAssertions.assertSoftly(softly -> {

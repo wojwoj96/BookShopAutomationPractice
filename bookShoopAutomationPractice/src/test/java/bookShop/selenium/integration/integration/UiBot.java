@@ -1,8 +1,11 @@
 package bookShop.selenium.integration.integration;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.ScriptTimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -41,9 +44,9 @@ public class UiBot {
     
     public static void waitUntilWebElementVisible(final WebElement webElement, int second) {
 
-        WebDriverWait warter = new WebDriverWait(UiBot.driver(), second);
-        warter.pollingEvery(Duration.ofMillis(200));
-        warter.until(ExpectedConditions.visibilityOf(webElement));
+        WebDriverWait waiter = new WebDriverWait(UiBot.driver(), second);
+        waiter.pollingEvery(Duration.ofMillis(200));
+        waiter.until(ExpectedConditions.visibilityOf(webElement));
     }
      
     public static void waitForPageLoaded() {
@@ -88,4 +91,40 @@ public class UiBot {
 
     }
     
+    public static boolean istElementDisplayed(final WebElement webelement) {
+
+        try {
+            webelement.isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public static boolean istElementAktiv(final WebElement webelement) {
+
+        return Objects.isNull(webelement.getAttribute("disabled"));
+
+    }
+    
+    public static String getTextFromHover() {
+
+        UiBot.waitForPageLoaded();
+        return UiBot.driver().findElement(By.cssSelector("")).getText();
+
+    }
+            
+    /**
+     * Helping method to be sure, that the website is stable and the test can go on.
+     */
+    public static void waitUntilPageWillBeReady() {
+
+        try {
+            WebDriverWait waiter = new WebDriverWait(UiBot.driver(), 2);
+            waiter.pollingEvery(Duration.ofMillis(200));
+            waiter.until(driver -> driver.findElements(By.cssSelector(".input-spinner")).isEmpty());
+        } catch (Throwable error) {
+            Assert.fail("Timeout");
+        }
+    }
 }

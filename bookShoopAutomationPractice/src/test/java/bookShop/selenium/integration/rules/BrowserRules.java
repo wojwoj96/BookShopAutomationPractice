@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.github.webdriverextensions.WebDriverExtensionsContext;
 
-import bookShop.selenium.integration.rules.ConfigurationRules.Key;
+import bookShop.selenium.integration.rules.ExternalConfiguration.Key;
 
 public class BrowserRules extends ExternalResource{
 
@@ -27,11 +27,26 @@ public class BrowserRules extends ExternalResource{
 	
 	private static WebDriver driver;
 	
+	private ExternalConfiguration externalConfiguration;
+	
+	public BrowserRules(ExternalConfiguration externalConfiguration) {
+		this.externalConfiguration = externalConfiguration;
+	}
+	
+	public BrowserRules() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public WebDriver getDriver() {
+
+        return this.driver;
+    }
+	
 	protected void before() throws Throwable {
 
-        String driverPath = ConfigurationRules.get(Key.BROWSER_DRIVERPATH);
+        String driverPath = ExternalConfiguration.get(Key.BROWSER_DRIVERPATH);
         boolean isRemotePath = driverPath.toLowerCase().startsWith("http://");
-        switch (ConfigurationRules.get(Key.BROWSER_BROWSER)) {
+        switch (ExternalConfiguration.get(Key.BROWSER_BROWSER)) {
         
         case "CHROME":
 
@@ -39,7 +54,7 @@ public class BrowserRules extends ExternalResource{
                 driver = new RemoteWebDriver(new URL(driverPath), DesiredCapabilities.chrome());
             } else {
                 System.setProperty("webdriver.chrome.driver", //
-                		ConfigurationRules.get(Key.BROWSER_DRIVERPATH));
+                		ExternalConfiguration.get(Key.BROWSER_DRIVERPATH));
 
                 driver = new ChromeDriver();
             }
@@ -56,7 +71,7 @@ public class BrowserRules extends ExternalResource{
                     driver = new RemoteWebDriver(new URL(driverPath), firefoxOptions);
                 } else {
                     System.setProperty("webdriver.gecko.driver", //
-                    		ConfigurationRules.get(Key.BROWSER_DRIVERPATH));
+                    		ExternalConfiguration.get(Key.BROWSER_DRIVERPATH));
 
                     firefoxOptions.setHeadless(false);
                     driver = new FirefoxDriver(firefoxOptions);

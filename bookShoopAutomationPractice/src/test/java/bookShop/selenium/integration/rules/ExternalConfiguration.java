@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 
 
-public class ConfigurationRules {
+public class ExternalConfiguration {
 
 	  private static Properties properties = new Properties();
 
@@ -18,22 +18,23 @@ public class ConfigurationRules {
 	            System.setProperty("properties", "properties");
 	        }
 
-	        try (InputStream input = ConfigurationRules.class.getClassLoader().getResourceAsStream("config/" + System
+	        try (InputStream input = ExternalConfiguration.class.getClassLoader().getResourceAsStream("config/" + System
 	                .getProperty("properties"))) {
 	            properties.load(input);
 	        } catch (Exception e) {
 	            Assert.fail("Initiall Selenium Configuration faild\n" + e);
 	        }
-
-	        for (Key key : Key.values()) {
-	            setExternalProperty(key);
-	        }
+	        
+	            setExternalProperty(Key.BROWSER_BASE_URL);
+	            setExternalProperty(Key.BROWSER_BROWSER);
+	            setExternalProperty(Key.BROWSER_DRIVERPATH);
+	        
 	    }
 	
 	    /**
 	     * 
 	     */
-	    private static void setExternalProperty(final Key propertyKey) {
+	    private static void setExternalProperty(Key propertyKey) {
 
 	        String property = System.getProperty(propertyKey.getKey());
 	        if (null != property) {
@@ -41,7 +42,7 @@ public class ConfigurationRules {
 	        }
 	    }
 	    
-	    public static String get(final Key key) {
+	    public static String get(Key key) {
 
 	        return properties.getProperty(key.getKey());
 	    }
@@ -71,7 +72,7 @@ public class ConfigurationRules {
 	    		}
 	    		    
 	    	public String getKey() {
-				return key;
+				return this.key;
 			}
 	    }
 	    

@@ -6,19 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import bookShop.selenium.integration.integration.UiBot;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public abstract class HomePage extends Page {
 		
-
-	public HomePage(WebDriver driver){
-	       this.driver=driver;
-	       driver.get(PageUrl);
-	       //Initialise Elements
-	       PageFactory.initElements(driver, this);
-	}
-
 	@FindBy(id = "searchform")
     private WebElement searchform;
 		
@@ -37,15 +28,19 @@ public abstract class HomePage extends Page {
 	@FindBy(css = "#text-22-sub_row_1-0-2-0-0 > div > ul > li > a.added_to_cart.wc-forward")
 	private WebElement viewCardButton;
 	
+	private static String PageUrl ="http://practice.automationtesting.in/";
 	
+	private WebDriver driver;
+    
+	public HomePage(WebDriver driver){
+	       this.driver=driver;
+	       driver.get(PageUrl);
+	       //Initialise Elements
+	       PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
+	}
 	
-    public void isMainPageReadyToUse() {
-    	
-    }
-
-    public void addBookToBasket() {
+	public void addBookToBasket() {
     	this.addToBasketButton.click();
-    	//UiBot.waitForPageLoaded();
     	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
     
@@ -70,11 +65,5 @@ public abstract class HomePage extends Page {
 	   public boolean isPageOpened(){
 	       return navigationMainMenu.isOpen(true);
 	   }
-        
-    ///////////////////////////////////////////77
-    private WebDriver driver;
-    
-    private static String PageUrl ="http://practice.automationtesting.in/";
-    
     
 }
