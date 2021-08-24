@@ -1,0 +1,28 @@
+# Browser
+
+#browser.browser=FIREFOX
+browser.browser=CHROME
+
+# Path Driver
+browser.driverpath=C:\\BookShopAutomationPractice\\BookShopAutomationPractice\\chromedriver_92.0.4515.107.exe
+#browser.driverpath=C:\\geckodriver.exe
+
+# Starting website 
+browser.url=http://practice.automationtesting.in/
+
+# Future parameter for CI
+# browser.firefox.profile=selenium
+
+###########################################################################################
+
+# Future properties for Database
+
+# Database server
+#database.bookshop.url=jdbc:oracle:thin:
+
+# Database schema bookshop
+#database.bookshop.schema=
+
+# Database bookshop username and password
+#database.bookshop.username=
+#database.bookshop.password=
